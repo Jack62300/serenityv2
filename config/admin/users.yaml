@@ -1,0 +1,34 @@
+easy_admin:
+   entities:
+       Users:
+            class: App\Entity\User
+            # file_base_path: 'Public/document'
+            
+            list:
+                max_results: 10
+                title: "Liste des Utilisateurs"
+                help: 'Ajouter et supprimer ou modifier un Compte serveur'
+                edit:
+                    actions: ['show', '-delete']
+                list:
+                    actions: ['edit', 'search', '-delete']
+                actions:
+                  - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-warning'}
+                  - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}
+                fields:
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'email', label: 'Adresse email' }
+                    - { property: 'steamHex', label: 'Steam Hex' }
+                    
+            form:
+                title: "Ajouter un Utilisateurs"
+                fields:
+                    - { property: 'username', label: 'Pseudo' }
+                    - { property: 'email', label: 'Adresse email' }
+                    - { property: 'steamHex', label: 'Steam Hex' }
+            new:
+                title:  'Ajouter un utilisateur'
+                form_options: { validation_groups: ['Default', 'Customer'] }
+            edit:
+                title:  "Modifier l'utilisateur"
+                form_options: { validation_groups: ['Default'] }

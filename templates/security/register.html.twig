@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription Sérénity Roleplay{% endblock %}
+
+{% block body %}
+<div class="login-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
+        <div class="container">
+            <div class="row">
+
+                <!-- Login -->
+                <div class="col-md-6 col-12 d-flex">
+                    <div class="gilbard-login">
+
+                        <h3>Bienvenue sur Serenity Roleplay</h3>
+                        <p>Inscrivais vous ici pour accéder à votre compte</p>
+
+                        <!-- Login Form -->
+                        {{ form_start(form) }}
+
+                        {{ form_row(form.username,{'label': 'Nom de compte','attr':{'placeholder':'Nom de votre compte', 'class': 'col-12 mb-30'}}) }}
+                        {{ form_row(form.steamHex,{'label': 'Steam Hex 64','attr':{'placeholder':'Steam id Hex 64', 'class': 'col-12 mb-30'}}) }}
+                        {{ form_row(form.email,{'label': 'Adresse Email','attr':{'placeholder':'Entrer votre adresse email', 'class': 'col-12 mb-30'}}) }}
+                        {{ form_row(form.password,{'label': 'Mot de passe du compte','attr':{'placeholder':'Mot de Passe', 'class': 'col-12 mb-30'}}) }}
+                       <div class="col-12"><input type="submit" value="Inscription"></div>
+                        {{ form_end(form) }}
+                        
+                        <h4>Vous avez dèja un compte ? <a href="{{ path('security_login') }}">Connexion</a></h4>
+                    </div>
+                </div>
+
+                <div class="col-md-1 col-12 d-flex">
+
+                    <div class="login-reg-vertical-boder"></div>
+
+                </div>
+
+                <!-- Login With Social -->
+                <div class="col-md-5 col-12 d-flex">
+
+                    <div class="gilbard-social-login">
+                        <h3>Inscription sur Serenity Roleplay</h3>
+
+                        <img src="{{ asset('assets/images/logo.png')}}"/>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+easy_admin:
+    site_name: '<img class="logo" src="logo.png" />'
+    design:
+                
+                menu:
+
+                    - label: 'Compte'
+                      icon: 'graduation-cap'
+                      children:
+                          - {entity: 'Users',class: 'submenu', label: 'Compte Ingame', icon: 'graduation-cap'}
+                          
+
+                    - label: 'Site'
+                      icon: 'newspaper-o'
+                      children:
+                          - { entity: 'News', Label: 'Question', icon: 'file'}
+
+                  
+
+                assets:
+                    css:
+                        # HTTP protocol-relative URL
+                        - 'admin/css/style.css'
+                        - '//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic'
+
+
+                form_theme:
+                    # - 'VichUploaderBundle:Form:fields.html.twig'

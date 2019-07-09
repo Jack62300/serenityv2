@@ -1,0 +1,34 @@
+easy_admin:
+   entities:
+       News:
+            class: App\Entity\News
+            # file_base_path: 'Public/document'
+            
+            list:
+                max_results: 10
+                title: "Liste des News"
+                help: 'Ajouté supprimé modifier une news'
+                edit:
+                    actions: ['show', '-delete']
+                list:
+                    actions: ['edit', 'search', '-delete']
+                actions:
+                  - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-warning'}
+                  - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}
+                fields:
+                    - { property: 'title', label: 'Titre de la News' }
+                    - { property: 'imageFile', type: 'vich_image', template: 'vich_uploader_image.html.twig' }
+                    - { property: 'steamHex', label: 'Steam Hex' }
+                    
+            form:
+                title: "Ajouter une news"
+                fields:
+                    - { property: 'title', label: 'Titre de la News' }
+                    - { property: 'imageFile', type: 'vich_image', template: 'vich_uploader_image.html.twig' }
+                    - { property: 'steamHex', label: 'Steam Hex' }
+            new:
+                title:  'Ajouter une news'
+                form_options: { validation_groups: ['Default', 'Customer'] }
+            edit:
+                title:  "Modifier une news"
+                form_options: { validation_groups: ['Default'] }
