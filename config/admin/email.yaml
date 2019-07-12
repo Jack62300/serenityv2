@@ -1,0 +1,32 @@
+easy_admin:
+   entities:
+       Email:
+            class: App\Entity\ExtensionMail
+            # file_base_path: 'Public/document'
+            
+            list:
+                max_results: 10
+                title: "Liste des extension boite mail"
+                help: 'Ajouter et supprimer ou modifier une extension'
+                edit:
+                    actions: ['show', '-delete']
+                list:
+                    actions: ['edit', 'search', '-delete']
+                actions:
+                  - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-warning'}
+                  - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}
+                fields:
+                    - { property: 'name', label: 'Extension' }
+                    - { property: 'JobLocked', label: 'Bloquer sur un Job' }
+                    
+            form:
+                title: "Ajouter un Utilisateurs"
+                fields:
+                    - { property: 'name', label: 'Extension' }
+                    - { property: 'JobLocked', label: 'Bloquer sur un Job' }
+            new:
+                title:  'Ajouter une extension'
+                form_options: { validation_groups: ['Default', 'Customer'] }
+            edit:
+                title:  "Modifier l'extension"
+                form_options: { validation_groups: ['Default'] }

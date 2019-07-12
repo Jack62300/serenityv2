@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
@@ -24,10 +24,6 @@ class News
      */
     private $title;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $imgFile;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -51,6 +47,13 @@ class News
      * @var integer
      */
     private $imageSize;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+
 
     /**
      * @ORM\Column(type="text")
@@ -90,17 +93,7 @@ class News
         return $this;
     }
 
-    public function getImgFile(): ?string
-    {
-        return $this->imgFile;
-    }
-
-    public function setImgFile(string $imgFile): self
-    {
-        $this->imgFile = $imgFile;
-
-        return $this;
-    }
+  
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance

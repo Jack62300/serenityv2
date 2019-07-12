@@ -5339,3 +5339,16 @@ header.header.header-static {
       font-size: 13px; } }
   .copyright p a:hover {
     color: #f64140; }
+  .colorwhite{
+    background-color: white;
+    color: black;
+  }
+  .card{
+    padding: 0 !important;
+  }
+  .gallery-area .section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }

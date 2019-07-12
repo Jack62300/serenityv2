@@ -25,7 +25,7 @@
                 </div>
             </div>
             <!--Hero Item end-->
-            <!--Hero Item start-->
+            {# <!--Hero Item start-->
             <div class="hero-item hero-item-2" style="background-image: url(assets/images/hero/hero-3.jpg)">
                 <div class="container container-1520">
                     <div class="row">
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <!--Hero Item end-->
-        </div>
+        </div> #}
     </div>
     <!--slider section end-->
     
@@ -60,16 +60,27 @@
                             <!--Single Blog Post Start-->
                             <div class="single-blog-post blog-list mb-30">
                                 <div class="blog-img">
-                                    <a href="single-blog.html"><img src="{{ newse.imgFile }}" alt=""></a>
+                                    <a href="{{ path('news_perso', {'id': newse.id})}}"> <img src="{{ vich_uploader_asset(newse, 'imageFile') }}" alt="{{ newse.imageName }}"></a>
                                 </div>
                                 <div class="blog-content">
-                                    <h3><a href="single-blog.html">{{ newse.title }}</a></h3>
-                                    <p>{{ newse.contenue }}</p>
+                                    <a href="{{ path('news_perso', {'id': newse.id})}}"><h3>{{ newse.title }}</h3></a>
+                                    <p>{{ newse.contenue|length > 250 ? newse.contenue|slice(0, 250) ~ '...' : newse.contenue  }}</p>
                                     <div class="blog-bottom">
                                         <ul class="meta meta-border-bottom">
                                             <li><a href="#">{{ newse.author }}</a></li> 
                                             <li>{{ newse.createdAt|date('d/m/y') }} , {{ newse.createdAt|date('h:m') }}</li>
-                                            <li><a href="#">{{ newse.categorie }}</a></li>
+
+                                            {% if newse.categorie in "Information" %}
+                                                <li><span class="badge badge-info">{{newse.categorie}}</span></li>
+                                            {% elseif newse.categorie in "Patchnote" %}
+                                                <li><span class="badge badge-danger">{{newse.categorie}}</span></li>
+                                            {% elseif newse.categorie in "Recrutement" %}
+                                                <li><span class="badge badge-warning">{{newse.categorie}}</span></li>
+                                            {% elseif newse.categorie in "Réglement" %}
+                                                <li><span class="badge badge-primary">{{newse.categorie}}</span></li>
+                                            {% else %}
+                                                <li><span class="badge badge-default">Aucune</span></li>
+                                            {% endif %}
                                         </ul>
                                     </div>
                                 </div>
@@ -77,223 +88,22 @@
                             <!--Single Blog Post End-->
                         </div>
                         {% endfor %}
-                      
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="blog-pagination text-center">
-                                <ul class="page-pagination">
-                                    <li><a href="#"><i class="icofont-long-arrow-left"></i></a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#"><i class="icofont-long-arrow-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                   
                 <div class="col-lg-4">
                     <div class="sidebar-area mt-sm-55 mt-xs-50">
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                            <h3>featured games</h3>
-                            <div class="single-featured-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="assets/images/banner/sidebar-banner1.jpg" alt=""></a>
-                                    <a class="game-title" href="#">the killer</a>
-                                </div>
-                            </div>
-                            <div class="single-featured-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="assets/images/banner/sidebar-banner2.jpg" alt=""></a>
-                                    <a class="game-title" href="#">muscle cars</a>
-                                </div>
-                            </div>
+                            <h3>Discord serenity</h3>
+                            <iframe src="https://discordapp.com/widget?id=559713253551505419&theme=dark" width="300" height="500" allowtransparency="true" frameborder="0"></iframe>
                         </div>
                         <!--Single Sidebar Widget End-->
-                        <!--Single Sidebar Widget Start-->
-                        <div class="single-sidebar-widget mb-45">
-                            <h3>follow us</h3>
-                            <div class="sidebar-social">
-                                <ul>
-                                    <li><a class="facebook" href="#"><i class="icofont-facebook"></i></a></li>
-                                    <li><a class="youtube" href="#"><i class="icofont-youtube-play"></i></a></li>
-                                    <li><a class="instagram" href="#"><i class="icofont-instagram"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="icofont-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--Single Sidebar Widget End-->
-                        <!--Single Sidebar Widget Start-->
-                        <div class="single-sidebar-widget mb-45">
-                            <h3>popular/recomended</h3>
-                            <div class="popular-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="assets/images/banner/sidebar-banner3.jpg" alt=""></a>
-                                </div>
-                                <div class="game-content">
-                                    <h3><a href="#">Splinter cell</a></h3>
-                                    <span>pc/xbox/ps4</span>
-                                </div>
-                            </div>
-                            <div class="popular-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="assets/images/banner/sidebar-banner4.jpg" alt=""></a>
-                                </div>
-                                <div class="game-content">
-                                    <h3><a href="#">battle field 4</a></h3>
-                                    <span>pc/xbox/ps4</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Single Sidebar Widget End-->
-                        <!--Single Sidebar Widget Start-->
-                        <div class="single-sidebar-widget mb-45">
-                            <h3>recent post</h3>
-                            <div class="sidebar-rc-post">
-                                <ul>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="assets/images/rc-img/rc-img1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">latest update of the new version</a></h3>
-                                            <div class="widget-date">05 November, 2018</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="assets/images/rc-img/rc-img2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">Crew in the earth get new season</a></h3>
-                                            <div class="widget-date">08 November, 2018</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="assets/images/rc-img/rc-img3.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">secrect code for the Mortal Kombat 4</a></h3>
-                                            <div class="widget-date">05 November, 2018</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="assets/images/rc-img/rc-img4.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">need for speed have new challenge</a></h3>
-                                            <div class="widget-date">02 November, 2018</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--Single Sidebar Widget End-->
-                        <!--Single Sidebar Widget Start-->
-                        <div class="single-sidebar-widget mb-45">
-                            <div class="sidebar-banner">
-                                <a href="#"><img src="assets/images/banner/banner2.jpg" alt=""></a>
-                            </div>
-                        </div>
-                        <!--Single Sidebar Widget End-->
-                        <!--Single Sidebar Widget Start-->
-                        <div class="single-sidebar-widget">
-                            <h3>follow us</h3>
-                            <div class="sidebar-instagram">
-                                <ul>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram1.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram2.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram3.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram4.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram5.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instagram/instagram6.jpg" alt=""></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--Single Sidebar Widget End-->
-                    </div>
+                        
                 </div>
             </div>
         </div>
     </div>
     <!--Blog Area End-->
     
-    <!--Footer section start-->
-    <footer class="footer-section style-2 section bg-theme" style="background-image: url(assets/images/bg/footer-bg.jpg)">
-       
-        <!--Footer Top start-->
-        <div class="footer-top section pt-80 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-40 pb-80 pb-lg-70 pb-md-60 pb-sm-15 pb-xs-40">
-            <div class="container container-1520">
-                <div class="row justify-content-lg-between">
-                    
-                    <!--Footer Widget start-->
-                    <div class="col-xl-3 col-lg-2 col-md-3">
-                        <div class="footer-widget">
-                            <div class="footer-logo">
-                                <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Footer Widget end-->
-                    
-                    <!--Footer Widget start-->
-                    <div class="col-xl-6 col-lg-6 col-md-9">
-                        <div class="footer-widget">
-                            <div class="footer-nav">
-                                <nav>
-                                    <ul>
-                                        <li><a href="#">forums</a></li>
-                                        <li><a href="#">demo</a></li>
-                                        <li><a href="#">support</a></li>
-                                        <li><a href="#">terms & conditions</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Footer Widget end-->
-                    
-                    <!--Footer Widget start-->
-                    <div class="col-xl-3 col-lg-4 col-md-12">
-                        <div class="footer-widget">
-                            <div class="footer-social">
-                               <span>follow us:</span>
-                                <ul>
-                                    <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                    <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Footer Widget end-->    
-                    
-                </div>
-            </div>
-        </div>
-        <!--Footer Top end-->
-        
-        <!--Footer bottom start-->
-        <div class="footer-bottom border-color section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="copyright text-center">
-                            <p>Copyright &copy;2018 <a  href="#">Gilbard</a>. All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Footer bottom end-->
-        
-     </footer>
 {% endblock %}

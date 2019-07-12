@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de votre boite email{% endblock %}
+
+{% block body %}
+  <!--Login Section Start-->
+    <div class="login-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
+        <div class="container">
+            <div class="row">
+
+                <!-- Login -->
+                <div class="col-md-12 col-12 d-flex">
+                    <div class="gilbard-login">
+                        <h3>Création de votre boite email</h3>
+                        <p>Attention au Extension existente </p>
+                        <div class="alert alert-info">
+                        <strong>Information!</strong> Si vous boite email n'est pas crée c'est que vous en avez déja une ou qu'elle existe déja.
+                        </div>
+
+                        <!-- Login Form -->
+                        {{ form_start(form) }}
+
+                        {{ form_row(form.name,{'label': 'Nom de compte','attr':{'placeholder':'Nom de votre compte', 'class': 'col-12 mb-30'}}) }}
+                        {{ form_row(form.steamHex,{'label': 'Steam Hex 64','attr':{'placeholder': 'votre steam hex', 'class': 'col-12 mb-30'}}) }}
+                        {{ form_row(form.adresseMail,{'label': 'Adresse Email','attr':{'placeholder':'Entrer votre adresse email', 'class': 'col-12 mb-30'}}) }}
+                        <select name="extension" class="col-lg-12 mb-30">
+                        <option value="@serenity.ls">@serenity.ls</option>
+                        <option value="@job.ls">@job.ls</option>
+                        <option value="@dance.ls">@dance.ls</option>
+                        <option value="@pipo.ls">@pipo.ls</option>
+                        <option value="@zorro.ls">@zorro.ls</option>
+                        <option value="@sexandthebeach.ls">@sexandthebeach.ls</option>
+                        <option value="@darthvadoor.ls">@darthvadoor.ls</option>
+                        <option value="@harrypeterleroidesbranleur.ls">@harrypeterleroidesbranleur.ls</option>
+                        </select><br/><br/>
+
+                        {{ form_row(form.signature,{'label': 'Signature email','attr':{'placeholder':'Signature de vos email', 'class': 'col-12 mb-30'}}) }}
+                       <div class="col-12"><input type="submit" value="Inscription"></div>
+                        {{ form_end(form) }}
+                        
+
+                    </div>
+                </div>
+
+               
+                <!-- Login With Social -->
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

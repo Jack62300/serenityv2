@@ -1,0 +1,36 @@
+easy_admin:
+   entities:
+       Sanction:
+            class: App\Entity\SanctionJ
+            # file_base_path: 'Public/document'
+            
+            list:
+                max_results: 10
+                title: "Liste des Sanction Utilisateur"
+                help: 'Ajouter et supprimer ou modifier une sanction'
+                edit:
+                    actions: ['show', '-delete']
+                list:
+                    actions: ['edit', 'search', '-delete']
+                actions:
+                  - {name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-warning'}
+                  - {name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger'}
+                fields:
+                    - { property: 'raison', label: 'Motif' }
+                    - { property: 'author', label: 'Auteur de la sanction' }
+                    - { property: 'createdAt', label: 'Date de la sanction' }
+                    - { property: 'steamHex', label: "Steam id hex 64 du joueur sanctionner" }
+                    
+            form:
+                title: "Ajouter un Utilisateurs"
+                fields:
+                    - { property: 'raison', label: 'Motif' }
+                    - { property: 'author', label: 'Auteur de la sanction' }
+                    - { property: 'createdAt', label: 'Date de la sanction' }
+                    - { property: 'steamHex', label: "Steam id hex 64 du joueur sanctionner" }
+            new:
+                title:  'Ajouter une sanction'
+                form_options: { validation_groups: ['Default', 'Customer'] }
+            edit:
+                title:  "Modifier une sanction"
+                form_options: { validation_groups: ['Default'] }

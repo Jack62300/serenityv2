@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité{% endblock %}
+
+{% block body %}
+ <!--slider section start-->
+    <div class="hero-section section position-relative">
+        <div class="hero-slider">
+            <!--Hero Item start-->
+            <div class="hero-item hero-item-2" style="background-image: url({{ asset('assets/images/V2/bg01.jpg')}})">
+                <div class="container container-1520">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!--Hero Content start-->
+                            <div class="hero-content">
+                                <h1>L'illégal est parfois Risquer </h1>
+                                <h2>Mais ca en vos le coups </h2>
+                                
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+            <!--Hero Item start-->
+            <div class="hero-item hero-item-2" style="background-image: url({{ asset('assets/images/hero/hero-3.jpg')}})">
+                <div class="container container-1520">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!--Hero Content start-->
+                            <div class="hero-content">
+                                <h1>THE WITCHER 3</h1>
+                                <h2>BETTLE BEGAN’S HERE</h2>
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+        </div>
+    </div>
+    <!--slider section end-->
+    
+  <!--Blog Area Start-->
+    <div class="blog-details-area section col-lg-12">
+        <div class="container">
+            <div class="row row-25">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="blog-details">
+                                    <div class="blog-img">
+                                        
+                                            <img src="{{ vich_uploader_asset(news, 'imageFile') }}" alt="{{ news.title }}">
+                                    <div class="meta-box">
+                                        <ul class="meta meta-border-bottom">
+                                            <li><a href="#"> {{ news.author }}</a></li> 
+                                            <li> {{ news.createdAt|date('d/m/y') }} </li>
+                                            {% if news.categorie in "Information" %}
+                                            <li><span class="badge badge-info">{{news.categorie}}</span></li>
+                                        {% elseif news.categorie in "Patchnote" %}
+                                            <li><span class="badge badge-danger">{{news.categorie}}</span></li>
+                                        {% elseif news.categorie in "Recrutement" %}
+                                            <li><span class="badge badge-warning">{{news.categorie}}</span></li>
+                                        {% elseif news.categorie in "Réglement" %}
+                                            <li><span class="badge badge-primary">{{news.categorie}}</span></li>
+                                        {% else %}
+                                            <li><span class="badge badge-default">Aucune</span></li>
+                                        {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3> {{ news.title }} </h3>
+                                    {{ news.contenue }}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!--Blog Area End-->
+    
+
+    
+{% endblock %}

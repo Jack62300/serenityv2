@@ -19,6 +19,7 @@ easy_admin:
                     - { property: 'username', label: 'Pseudo' }
                     - { property: 'email', label: 'Adresse email' }
                     - { property: 'steamHex', label: 'Steam Hex' }
+                    - { property: 'roles', label: "Role de L'utilisateur" }
                     
             form:
                 title: "Ajouter un Utilisateurs"
@@ -26,6 +27,8 @@ easy_admin:
                     - { property: 'username', label: 'Pseudo' }
                     - { property: 'email', label: 'Adresse email' }
                     - { property: 'steamHex', label: 'Steam Hex' }
+                    - { property: 'password', label: 'Mot de passe' }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'Utilisateur': 'ROLE_USER', 'Administrateur': 'ROLE_ADMIN', 'Super administrateur': 'ROLE_SUPER_ADMIN' } } }
             new:
                 title:  'Ajouter un utilisateur'
                 form_options: { validation_groups: ['Default', 'Customer'] }

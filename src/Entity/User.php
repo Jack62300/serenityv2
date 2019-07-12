@@ -3,47 +3,56 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(
- * fields={"email"},
- * message="l'email que vous avez indiquée est déja utiliser !"
- * )
  */
 class User implements UserInterface
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Email()
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit contenir 8 caracter minimun")
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="steam_hex", type="string", length=255)
      */
     private $steamHex;
+
+    /**
+     * @var json
+     *
+     * @ORM\Column(name="roles", type="json")
+     */
+    private $roles;
 
     public function getId(): ?int
     {
@@ -85,12 +94,6 @@ class User implements UserInterface
 
         return $this;
     }
-  
-    public function eraseCredentials(){}
-    public function getSalt(){}
-    public function getRoles(){
-        return ['ROLE_USER'];
-    }
 
     public function getSteamHex(): ?string
     {
@@ -103,5 +106,23 @@ class User implements UserInterface
 
         return $this;
     }
-   
+
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+    public function eraseCredentials(){}
+    public function getSalt(){}
+
 }

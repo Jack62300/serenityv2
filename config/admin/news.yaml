@@ -18,14 +18,20 @@ easy_admin:
                 fields:
                     - { property: 'title', label: 'Titre de la News' }
                     - { property: 'imageFile', type: 'vich_image', template: 'vich_uploader_image.html.twig' }
-                    - { property: 'steamHex', label: 'Steam Hex' }
+                    - { property: 'contenue', label: 'Contenue de la News' }
+                    - { property: 'createdAt', label: 'Date de Publication' }
+                    - { property: 'author', label: 'Auteur de la News' }
+                    - { property: 'Categorie', label: 'Catgorie de la News' }
                     
             form:
                 title: "Ajouter une news"
                 fields:
                     - { property: 'title', label: 'Titre de la News' }
                     - { property: 'imageFile', type: 'vich_image', template: 'vich_uploader_image.html.twig' }
-                    - { property: 'steamHex', label: 'Steam Hex' }
+                    - { property: 'contenue', label: 'Contenue de la News' }
+                    - { property: 'createdAt', label: 'Date de Publication' }
+                    - { property: 'author', label: 'Auteur de la News' }
+                    - { property: 'categorie', type: 'choice', type_options: {choices: {'information':'Information', 'PatchNote':'Patchnote', 'Réglement':'Réglement','Recrutement':'Recrutement'}}}
             new:
                 title:  'Ajouter une news'
                 form_options: { validation_groups: ['Default', 'Customer'] }

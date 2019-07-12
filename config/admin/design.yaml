@@ -7,8 +7,13 @@ easy_admin:
                     - label: 'Compte'
                       icon: 'graduation-cap'
                       children:
-                          - {entity: 'Users',class: 'submenu', label: 'Compte Ingame', icon: 'graduation-cap'}
-                          
+                          - {entity: 'Users',class: 'submenu', label: 'Compte Utilisateur', icon: 'graduation-cap'}
+                          - { entity: 'Email', Label: 'Extension email', icon: 'graduation-cap'}
+                    
+                    - label: 'Gestion IG'
+                      icon: 'graduation-cap'
+                      children:
+                          - {entity: 'Sanction',class: 'submenu', label: 'Sanction Joueur', icon: 'graduation-cap'}  
 
                     - label: 'Site'
                       icon: 'newspaper-o'
